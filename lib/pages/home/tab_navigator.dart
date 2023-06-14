@@ -6,7 +6,7 @@ import '../cart_page.dart';
 import '../food_list_page.dart';
 
 class TabNavigator extends StatelessWidget {
-  const TabNavigator({super.key, required this.navigatorKey, required this.tabItem});
+  TabNavigator({required this.navigatorKey, required this.tabItem});
 
   final GlobalKey<NavigatorState> navigatorKey;
   final TabItem tabItem;
@@ -20,11 +20,11 @@ class TabNavigator extends StatelessWidget {
         // first we define current page
         Widget currentPage;
         if (tabItem == TabItem.CATEGORIES) {
-          currentPage = CategoryListPage();
+          currentPage = const CategoryListPage();
         } else if (tabItem == TabItem.CART) {
-          currentPage = CartPage();
+          currentPage = const CartPage();
         } else {
-          currentPage = FoodListPage();
+          currentPage = const FoodListPage();
         }
         // builind Route (page or screen)
         return MaterialPageRoute(builder: (context) => currentPage,);

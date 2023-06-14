@@ -1,34 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:mvc_pattern/mvc_pattern.dart';
 
 import '../../models/tab.dart';
+
+import '../../controllers/home_controller.dart';
+
 import 'bottom_navigation.dart';
 import 'tab_navigator.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
   @override
   _HomePageState createState() => _HomePageState();
 
 }
 
-class _HomePageState extends State<HomePage> {
-  var _counter = 0;
-
-  // GlobalKey will store uniqie key,
-  // using which we can access widgets
-  // that are already there
-  final _navigatorKeys = {
-    TabItem.CATEGORIES: GlobalKey<NavigatorState>(),
-    TabItem.SEARCH: GlobalKey<NavigatorState>(),
-    TabItem.CART: GlobalKey<NavigatorState>(),
-    TabItem.PROFILE: GlobalKey<NavigatorState>(),
-  };
-
-  var _currentTab = TabItem.CATEGORIES;
-
-  // choosing ,enu element
-  void _selectTab(TabItem tabItem) {
-    setState(() => _currentTab = tabItem);
-  }
+class _HomePageState extends StateMVC {
+  HomeController _homeController = HomeController.controller;
 
   @override
   Widget build(BuildContext context) {
@@ -36,11 +25,11 @@ class _HomePageState extends State<HomePage> {
     return WillPopScope(
       // processing logic of back buttin may be different
       onWillPop: () async {
-          if (_currentTab != TabItem.CATEGORIES) {
-            if (_currentTab == TabItem.SEARCH) {
-              _selectTab(TabItem.CART);
+          if (_homeController.currentTab != TabItem.CATEGORIES) {
+            if (_homeController.currentTab == TabItem.SEARCH) {
+              _homeController.selectTab(TabItem.CART);
             } else {
-              _selectTab(TabItem.CATEGORIES);
+              _homeController.selectTab(TabItem.CATEGORIES);
             }
             return false;
           } else {
@@ -57,8 +46,8 @@ class _HomePageState extends State<HomePage> {
           _buildOffstageNavigator(TabItem.PROFILE),
         ]),
         bottomNavigationBar: MyBottomNavigation(
-          currentTab: _currentTab,
-          onSelectTab: _selectTab,
+          currentTab: _homeController.currentTab,
+          onSelectTab: _homeController.selectTab,
         ),
       ),);
   }
@@ -67,9 +56,9 @@ class _HomePageState extends State<HomePage> {
     return Offstage(
       // Offstage does this:
       // if it is not currently selected element in bottom nav bar, then it will hide it
-      offstage: _currentTab != tabItem,
+      offstage: _homeController.currentTab != tabItem,
       child: TabNavigator(
-        navigatorKey: _navigatorKeys[tabItem]!,
+        navigatorKey: _homeController.navigatorKeys[tabItem]!,   
         tabItem: tabItem,
       ),
     );

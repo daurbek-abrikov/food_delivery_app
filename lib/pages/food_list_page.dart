@@ -54,13 +54,15 @@ final List<Pony> ponies = [
 
 
 class FoodListPage extends StatelessWidget {
+  const FoodListPage({super.key});
+
   
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Food List Page")),
+      appBar: AppBar(title: const Text("Food List Page")),
       body: Padding(
-        padding: EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+        padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
           child: ListView(
             children: ponies.map<Widget>((pony) {
               return Material(
@@ -73,7 +75,7 @@ class FoodListPage extends StatelessWidget {
                     ));
                   },
                   child: Container(
-                      padding: EdgeInsets.all(15),
+                      padding: const EdgeInsets.all(15),
                       child: Text(
                           pony.name,
                           style: Theme.of(context).textTheme.headlineMedium?.copyWith(color: Colors.white)

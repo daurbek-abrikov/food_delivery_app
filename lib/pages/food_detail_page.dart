@@ -5,23 +5,23 @@ import 'food_list_page.dart';
 class FoodDetailPage extends StatelessWidget {
   final int ponyId;
 
-  const FoodDetailPage(this.ponyId);
+  const FoodDetailPage(this.ponyId, {super.key});
 
   @override
   Widget build(BuildContext context) {
     final pony = ponies[ponyId];
     return Scaffold(
       appBar: AppBar(
-        title: Text("Food Detail Page"),
+        title: const Text("Food Detail Page"),
       ),
       body: Padding(
-        padding: EdgeInsets.all(15),
+        padding: const EdgeInsets.all(15),
 
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Container(
-                padding: EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
                 decoration: const BoxDecoration(
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(15),
@@ -35,7 +35,7 @@ class FoodDetailPage extends StatelessWidget {
                 )
             ),
             Container(
-                padding: EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
                 child: Text(
                     pony.desc,
                     style: Theme.of(context).textTheme.bodyLarge
