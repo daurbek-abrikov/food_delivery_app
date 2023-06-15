@@ -17,7 +17,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends StateMVC {
-  HomeController _homeController = HomeController.controller;
+  final HomeController _homeController = HomeController.controller;
 
   @override
   Widget build(BuildContext context) {

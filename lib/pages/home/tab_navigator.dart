@@ -3,7 +3,7 @@ import 'package:food_delivery_app/pages/category_list_page.dart';
 import '../../../models/tab.dart';
 
 import '../cart_page.dart';
-import '../food_list_page.dart';
+import '../meal/meal_list_page.dart';
 
 class TabNavigator extends StatelessWidget {
   TabNavigator({required this.navigatorKey, required this.tabItem});
@@ -24,7 +24,7 @@ class TabNavigator extends StatelessWidget {
         } else if (tabItem == TabItem.CART) {
           currentPage = const CartPage();
         } else {
-          currentPage = const FoodListPage();
+          currentPage = const MealListPage();
         }
         // builind Route (page or screen)
         return MaterialPageRoute(builder: (context) => currentPage,);

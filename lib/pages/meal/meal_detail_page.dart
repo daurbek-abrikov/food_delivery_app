@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import 'food_list_page.dart';
+import 'meal_list_page.dart';
 
 
-class FoodDetailPage extends StatelessWidget {
-  final int ponyId;
+class MealDetailPage extends StatelessWidget {
+  final int mealId;
 
-  const FoodDetailPage(this.ponyId, {super.key});
+  const MealDetailPage(this.mealId, {super.key});
 
   @override
   Widget build(BuildContext context) {
-    final pony = ponies[ponyId];
+    // final pony = ponies[ponyId];
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Food Detail Page"),
+        title: const Text("Meal Detail Page"),
       ),
       body: Padding(
         padding: const EdgeInsets.all(15),
@@ -30,14 +30,14 @@ class FoodDetailPage extends StatelessWidget {
                   color: Colors.pinkAccent,
                 ),
                 child: Text(
-                    pony.name,
+                    "some",
                     style: Theme.of(context).textTheme.headlineMedium?.copyWith(color: Colors.white),
                 )
             ),
             Container(
                 padding: const EdgeInsets.all(10),
                 child: Text(
-                    pony.desc,
+                    "some",
                     style: Theme.of(context).textTheme.bodyLarge
                 )
             )
